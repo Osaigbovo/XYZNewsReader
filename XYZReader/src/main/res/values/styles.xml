@@ -1,7 +1,6 @@
 <resources>
 
-    <style name="Theme.Bacon" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
-
+    <style name="Theme.Bacon" parent="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge">
     </style>
 
     <style name="Theme.Bacon.Detail">
