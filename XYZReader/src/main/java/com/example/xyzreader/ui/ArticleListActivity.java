@@ -35,7 +35,7 @@ public class ArticleListActivity extends AppCompatActivity implements
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
 
-    private Adapter adapter;
+    private ArticleListAdapter articleListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +47,9 @@ public class ArticleListActivity extends AppCompatActivity implements
         mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         mRecyclerView = findViewById(R.id.recycler_view);
 
-        adapter = new Adapter(this, null);
-        adapter.setHasStableIds(true);
-        mRecyclerView.setAdapter(adapter);
+        articleListAdapter = new ArticleListAdapter(this, null);
+        articleListAdapter.setHasStableIds(true);
+        mRecyclerView.setAdapter(articleListAdapter);
         int columnCount = getResources().getInteger(R.integer.list_column_count);
 
         StaggeredGridLayoutManager sglm =
@@ -103,7 +103,7 @@ public class ArticleListActivity extends AppCompatActivity implements
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        adapter.updateList(cursor);
+        articleListAdapter.updateList(cursor);
     }
 
     @Override

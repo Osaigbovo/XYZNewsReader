@@ -26,7 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Adapter extends RecyclerView.Adapter<ViewHolder> {
+public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListViewHolder> {
 
     private static final String TAG = ArticleListActivity.class.toString();
 
@@ -41,7 +41,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     private final Context mContext;
     private Cursor mCursor;
 
-    Adapter(Context context, Cursor cursor) {
+    ArticleListAdapter(Context context, Cursor cursor) {
         this.mContext = context;
         mCursor = cursor;
     }
@@ -54,12 +54,12 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ArticleListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_article, parent, false);
 
-        final ViewHolder vh = new ViewHolder(view);
+        final ArticleListViewHolder vh = new ArticleListViewHolder(view);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,9 +83,11 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ArticleListViewHolder holder, int position) {
         mCursor.moveToPosition(position);
+
         holder.titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
+
         Date publishedDate = parsePublishedDate();
         if (!publishedDate.before(START_OF_EPOCH.getTime())) {
 
@@ -114,7 +116,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public boolean areRowContentsTheSame(Cursor oldCursor, Cursor newCursor) {
                 boolean contentsTheSame = (oldCursor.getString(ArticleLoader.Query.TITLE).equals(newCursor.getString(ArticleLoader.Query.TITLE)));
-                Log.i("Adapter", "contents the same: " + contentsTheSame);
+                Log.i("ArticleListAdapter", "contents the same: " + contentsTheSame);
                 return contentsTheSame;
             }
 
@@ -123,7 +125,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public boolean areCursorRowsTheSame(Cursor oldCursor, Cursor newCursor) {
                 boolean cursorRowsTheSame = (oldCursor.getString(ArticleLoader.Query.TITLE).equals(newCursor.getString(ArticleLoader.Query.TITLE)));
-                Log.i("Adapter", "cursor rows the same: " + cursorRowsTheSame);
+                Log.i("ArticleListAdapter", "cursor rows the same: " + cursorRowsTheSame);
                 return cursorRowsTheSame;
             }
         });

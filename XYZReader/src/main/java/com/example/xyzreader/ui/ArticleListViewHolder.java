@@ -8,15 +8,15 @@ import com.example.xyzreader.ui.widgets.DynamicHeightNetworkImageView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ViewHolder extends RecyclerView.ViewHolder {
+public class ArticleListViewHolder extends RecyclerView.ViewHolder {
     public DynamicHeightNetworkImageView thumbnailView;
     public TextView titleView;
     public TextView subtitleView;
 
-    public ViewHolder(View view) {
+    public ArticleListViewHolder(View view) {
         super(view);
-        thumbnailView = (DynamicHeightNetworkImageView) view.findViewById(R.id.thumbnail);
-        titleView = (TextView) view.findViewById(R.id.article_title);
-        subtitleView = (TextView) view.findViewById(R.id.article_subtitle);
+        thumbnailView = view.findViewById(R.id.thumbnail);
+        titleView = view.findViewById(R.id.article_title);
+        subtitleView = view.findViewById(R.id.article_subtitle);
     }
 }

@@ -26,6 +26,7 @@ android {
 dependencies {
     implementation files('libs/volley.jar')
 
+    // AndroidX
     implementation "androidx.appcompat:appcompat:$androidSupportVersion"
     implementation "androidx.cardview:cardview:$androidSupportVersion"
     implementation "androidx.legacy:legacy-support-v4:$androidSupportVersion"
@@ -38,6 +39,11 @@ dependencies {
     // Material Design Library
     implementation 'com.google.android.material:material:1.0.0'
 
+    // Glide - Image Processing
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+    // OkHTTP - Networking
     implementation 'com.squareup.okhttp3:okhttp:3.12.1'
 
 
