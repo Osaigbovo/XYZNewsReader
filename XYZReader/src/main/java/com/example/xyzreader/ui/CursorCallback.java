@@ -9,7 +9,7 @@ abstract class CursorCallback<C extends Cursor> extends DiffUtil.Callback {
     private final C newCursor;
     private final C oldCursor;
 
-    public CursorCallback(C newCursor, C oldCursor) {
+    CursorCallback(C newCursor, C oldCursor) {
         this.newCursor = newCursor;
         this.oldCursor = oldCursor;
     }
@@ -30,7 +30,6 @@ abstract class CursorCallback<C extends Cursor> extends DiffUtil.Callback {
                 moveCursorsToPosition(oldItemPosition, newItemPosition) &&
                 areCursorRowsTheSame(oldCursor, newCursor);
     }
-
 
     @Override
     public final boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
