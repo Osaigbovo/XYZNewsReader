@@ -23,7 +23,8 @@
     <color name="theme_primary_dark">#44837D</color>
     <color name="theme_accent">#FF8A80</color>
 
-    <color name="light_gray">#ffe0e0e0</color>
+    <color name="light_gray">#DAD9D9</color>
+    <color name="white">#FFFFFF</color>
     <color name="ltgray">#ffe0e0e0</color>
 
     <color name="fab_ripple">#80D8FF</color>
