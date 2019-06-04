@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -68,9 +69,15 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListViewHold
         final ArticleListViewHolder articleListViewHolder = new ArticleListViewHolder(view);
 
         view.setOnClickListener(view1 -> {
+
+            ActivityOptionsCompat options = ActivityOptionsCompat
+                    .makeSceneTransitionAnimation((Activity) mContext, articleListViewHolder.thumbnailView, mContext.getResources()
+                            .getString(R.string.transition_image_name));
+
             Bundle bundle = ActivityOptions
                     .makeSceneTransitionAnimation((Activity) mContext)
                     .toBundle();
+
             mContext.startActivity(new Intent(Intent.ACTION_VIEW,
                     ItemsContract.Items.buildItemUri(getItemId(articleListViewHolder.getAdapterPosition()))), bundle);
         });

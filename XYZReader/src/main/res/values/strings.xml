@@ -2,8 +2,10 @@
     <string name="app_name">XYZ Reader</string>
     <string name="welcome_xyz_reader">Welcome to XYZ Reader!</string>
 
+    <!-- Transition -->
+    <string name="transition_image_name" translatable="false">image</string>
 
-    <!---->
+    <!-- Article List-->
     <string name="article_image">Article Image</string>
 
     <!-- Article Detail-->
