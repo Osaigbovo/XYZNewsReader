@@ -19,6 +19,7 @@
     <dimen name="article_padding_4">4dp</dimen>
     <dimen name="article_padding_8">8dp</dimen>
     <dimen name="article_padding_16">16dp</dimen>
+    <dimen name="article_padding_32">32dp</dimen>
 
     <integer name="article_title_maxlines">4</integer>
     <integer name="article_subtitle_maxlines">2</integer>

@@ -40,28 +40,19 @@
             android:id="@+id/meta_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:orientation="vertical"
             android:padding="@dimen/article_padding">
 
             <TextView
                 android:id="@+id/article_title"
-                style="?android:attr/textAppearanceLarge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
-                android:lineSpacingMultiplier="0.9"
-                android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
-                android:textColor="#fff"
-                android:textSize="@dimen/detail_title_text_size"
-                android:textStyle="bold" />
+                style="@style/detail_article_title"/>
 
             <TextView
                 android:id="@+id/article_byline"
                 style="?android:attr/textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#8fff" />
+                android:textColor="@color/sub" />
         </LinearLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -70,7 +61,6 @@
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="fill_vertical"
         android:background="@color/light_gray"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -79,8 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="4dp"
-            android:paddingBottom="100dp">
+            android:paddingTop="@dimen/article_padding_4"
+            android:paddingBottom="@dimen/article_padding_32">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"

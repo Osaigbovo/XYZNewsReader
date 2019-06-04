@@ -24,6 +24,8 @@
 
     <color name="light_gray">#DAD9D9</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="sub">#8fff</color>
     <color name="ltgray">#ffe0e0e0</color>
 
     <color name="fab_ripple">#80D8FF</color>
