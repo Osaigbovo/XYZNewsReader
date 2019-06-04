@@ -14,12 +14,12 @@
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:theme="@style/Theme.Bacon">
 
         <activity
             android:name=".ui.ArticleListActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Bacon.Article">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,6 +29,8 @@
         <activity
             android:name=".ui.ArticleDetailActivity"
             android:parentActivityName=".ui.ArticleListActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Bacon.Detail"
             tools:ignore="AppLinkUrlError">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

@@ -16,6 +16,19 @@
         -->
     </style>
 
+    <style name="Theme.Bacon.Article">
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+
+        <!--
+         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+        <item name="android:fragmentExitTransition" tools:targetApi="lollipop">
+            @transition/slide_top
+        </item>-->
+    </style>
+
     <style name="Theme.Bacon.Detail" parent="Theme.Bacon">
         <item name="android:statusBarColor">@android:color/transparent</item>
 

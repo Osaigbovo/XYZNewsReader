@@ -13,5 +13,6 @@
     <string name="up">Up</string>
     <string name="passing_date">passing today\'s date</string>
     <string name="error_reading">Error reading item detail cursor</string>
+    <string name="empty_text">N/A</string>
 
 </resources>
