@@ -33,4 +33,34 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="article_title" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/article_margin_8</item>
+        <item name="android:layout_marginStart">@dimen/article_margin_8</item>
+        <item name="android:layout_marginEnd">@dimen/article_margin_8</item>
+        <item name="android:paddingStart">@dimen/article_padding_16</item>
+        <item name="android:paddingTop">@dimen/article_padding_16</item>
+        <item name="android:paddingEnd">@dimen/article_padding_16</item>
+        <item name="android:paddingBottom">@dimen/article_padding_4</item>
+        <item name="android:textColor">@color/ltgray</item>
+        <item name="android:maxLines">@integer/article_title_maxlines</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="artile_subtitle" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/article_margin_8</item>
+        <item name="android:layout_marginStart">@dimen/article_margin_8</item>
+        <item name="android:layout_marginEnd">@dimen/article_margin_8</item>
+        <item name="android:layout_marginBottom">@dimen/article_margin_8</item>
+        <item name="android:paddingStart">@dimen/article_padding_16</item>
+        <item name="android:paddingEnd">@dimen/article_padding_16</item>
+        <item name="android:paddingBottom">@dimen/article_padding_4</item>
+        <item name="android:textColor">#6000</item>
+        <item name="android:maxLines">@integer/article_subtitle_maxlines</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 </resources>

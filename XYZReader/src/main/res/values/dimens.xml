@@ -22,7 +22,18 @@
     <dimen name="material_card_margin">4dp</dimen>
     <dimen name="material_card_elevation">4dp</dimen>
 
-    <dimen name="article_margin">16dp</dimen>
+    <integer name="article_title_maxlines">4</integer>
+    <integer name="article_subtitle_maxlines">2</integer>
+
+    <dimen name="article_margin_8">8dp</dimen>
+    <dimen name="article_margin_16">16dp</dimen>
+
+    <dimen name="article_padding_4">4dp</dimen>
+    <dimen name="article_padding_8">8dp</dimen>
+    <dimen name="article_padding_16">16dp</dimen>
+
+
+
     <dimen name="expandedTitleMarginEnd">64dp</dimen>
     <dimen name="expandedTitleMarginStart">48dp</dimen>
     <dimen name="image_height">300dp</dimen>

@@ -1,9 +1,13 @@
 package com.example.xyzreader.ui;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -11,10 +15,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
-import com.example.xyzreader.utils.ImageLoaderHelper;
+import com.example.xyzreader.utils.GlideApp;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,20 +36,13 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.RecyclerView;
-
 public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListViewHolder> {
 
     private static final String TAG = ArticleListActivity.class.toString();
 
-    private final SimpleDateFormat dateFormat =
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss", Locale.US);
-    // Use default locale format
     @SuppressLint("SimpleDateFormat")
     private final SimpleDateFormat outputFormat = new SimpleDateFormat();
-    // Most time functions can only handle 1902 - 2037
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss", Locale.US);
     private final GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
 
     private final Context mContext;
@@ -43,7 +50,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListViewHold
 
     ArticleListAdapter(Context context, Cursor cursor) {
         this.mContext = context;
-        mCursor = cursor;
+        this.mCursor = cursor;
     }
 
     @Override
@@ -55,20 +62,19 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListViewHold
     @NonNull
     @Override
     public ArticleListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_article, parent, false);
 
-        final ArticleListViewHolder vh = new ArticleListViewHolder(view);
+        final ArticleListViewHolder articleListViewHolder = new ArticleListViewHolder(view);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mContext.startActivity(new Intent(Intent.ACTION_VIEW,
-                        ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
-            }
+        view.setOnClickListener(view1 -> {
+            Bundle bundle = ActivityOptions
+                    .makeSceneTransitionAnimation((Activity) mContext)
+                    .toBundle();
+            mContext.startActivity(new Intent(Intent.ACTION_VIEW,
+                    ItemsContract.Items.buildItemUri(getItemId(articleListViewHolder.getAdapterPosition()))), bundle);
         });
-        return vh;
+        return articleListViewHolder;
     }
 
     private Date parsePublishedDate() {
@@ -104,10 +110,33 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListViewHold
                             + "<br/>" + " by "
                             + mCursor.getString(ArticleLoader.Query.AUTHOR)));
         }
-        holder.thumbnailView.setImageUrl(
-                mCursor.getString(ArticleLoader.Query.THUMB_URL),
-                ImageLoaderHelper.getInstance(mContext).getImageLoader());
+
+        GlideApp.with(mContext)
+                .asBitmap()
+                .load(mCursor.getString(ArticleLoader.Query.THUMB_URL))
+                .listener(new RequestListener<Bitmap>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
+                        if (resource != null) {
+                            Palette palette = Palette.from(resource).generate();
+                            // Use generated instance
+                            int defaultColor = 0xFF333333;
+                            int color = palette.getMutedColor(defaultColor);
+                            holder.itemView.setBackgroundColor(color);
+                        }
+
+                        return false;
+                    }
+                })
+                .into(holder.thumbnailView);
+
         holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+
     }
 
     void updateList(Cursor newCursor) {
@@ -115,7 +144,8 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListViewHold
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new CursorCallback<Cursor>(this.mCursor, newCursor) {
             @Override
             public boolean areRowContentsTheSame(Cursor oldCursor, Cursor newCursor) {
-                boolean contentsTheSame = (oldCursor.getString(ArticleLoader.Query.TITLE).equals(newCursor.getString(ArticleLoader.Query.TITLE)));
+                boolean contentsTheSame = (oldCursor.getString(ArticleLoader.Query.TITLE)
+                        .equals(newCursor.getString(ArticleLoader.Query.TITLE)));
                 Log.i("ArticleListAdapter", "contents the same: " + contentsTheSame);
                 return contentsTheSame;
             }
@@ -124,7 +154,8 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListViewHold
             // article title as the unique id, as article titles are all different.
             @Override
             public boolean areCursorRowsTheSame(Cursor oldCursor, Cursor newCursor) {
-                boolean cursorRowsTheSame = (oldCursor.getString(ArticleLoader.Query.TITLE).equals(newCursor.getString(ArticleLoader.Query.TITLE)));
+                boolean cursorRowsTheSame = (oldCursor.getString(ArticleLoader.Query.TITLE)
+                        .equals(newCursor.getString(ArticleLoader.Query.TITLE)));
                 Log.i("ArticleListAdapter", "cursor rows the same: " + cursorRowsTheSame);
                 return cursorRowsTheSame;
             }
@@ -135,8 +166,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListViewHold
 
     @Override
     public int getItemCount() {
-        if (mCursor == null) return 0;
-        return mCursor.getCount();
+        return mCursor == null ? 0 : mCursor.getCount();
     }
 
 }

@@ -21,13 +21,19 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
     }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 dependencies {
     implementation files('libs/volley.jar')
 
     // AndroidX
-    implementation "androidx.appcompat:appcompat:$androidSupportVersion"
+    implementation "androidx.annotation:annotation:1.0.2"
+    implementation "androidx.appcompat:appcompat:1.0.2"
     implementation "androidx.cardview:cardview:$androidSupportVersion"
     implementation "androidx.legacy:legacy-support-v4:$androidSupportVersion"
     implementation "androidx.legacy:legacy-support-v13:$androidSupportVersion"
@@ -46,5 +52,8 @@ dependencies {
     // OkHTTP - Networking
     implementation 'com.squareup.okhttp3:okhttp:3.14.1'
 
+    // View Injection
+    implementation "com.jakewharton:butterknife:10.1.0"
+    annotationProcessor "com.jakewharton:butterknife-compiler:10.1.0"
 
 }

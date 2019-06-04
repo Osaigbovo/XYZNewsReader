@@ -8,15 +8,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.xyzreader.R;
 import com.example.xyzreader.ui.widgets.DynamicImageView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ArticleListViewHolder extends RecyclerView.ViewHolder {
-    public DynamicImageView thumbnailView;
-    public TextView titleView;
-    public TextView subtitleView;
+
+    @BindView(R.id.article_title) public TextView titleView;
+    @BindView(R.id.article_subtitle) public TextView subtitleView;
+    @BindView(R.id.thumbnail) public DynamicImageView thumbnailView;
 
     public ArticleListViewHolder(View view) {
         super(view);
-        thumbnailView = view.findViewById(R.id.thumbnail);
-        titleView = view.findViewById(R.id.article_title);
-        subtitleView = view.findViewById(R.id.article_subtitle);
+        ButterKnife.bind(this, itemView);
     }
+
 }
