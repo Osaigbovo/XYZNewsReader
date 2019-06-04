@@ -65,7 +65,7 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-    <style name="artile_subtitle" parent="TextAppearance.AppCompat.Body1">
+    <style name="article_subtitle" parent="TextAppearance.AppCompat.Body1">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/article_margin_8</item>
@@ -78,6 +78,19 @@
         <item name="android:textColor">#6000</item>
         <item name="android:maxLines">@integer/article_subtitle_maxlines</item>
         <item name="android:ellipsize">end</item>
+    </style>
+
+
+
+    <style name="fab" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:layout_margin">@dimen/fab_margin</item>
+       <item name="fabSize">normal</item>
+        <item name="elevation">@dimen/fab_elevation</item>
+        <item name="android:contentDescription">@string/action_share</item>
+        <item name="android:src">@drawable/ic_share</item>
+        <item name="android:stateListAnimator">@drawable/fab_state_list_anim</item>
+        <item name="pressedTranslationZ">@dimen/fab_press_translation_z</item>
+        <item name="rippleColor">@color/fab_ripple</item>
     </style>
 
 </resources>

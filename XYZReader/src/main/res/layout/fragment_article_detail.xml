@@ -1,6 +1,5 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/detail_coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,8 +24,7 @@
                 android:layout_height="@dimen/image_height"
                 android:contentDescription="@string/article_image"
                 android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"
-                tools:targetApi="lollipop" />
+                app:layout_collapseMode="parallax" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/detail_toolbar"
@@ -86,10 +84,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/article_margin_8"
-                android:layout_marginTop="@dimen/article_margin_8"
-                android:layout_marginEnd="@dimen/article_margin_8"
-                android:layout_marginBottom="@dimen/article_margin_8"
+                android:layout_margin="@dimen/article_margin_8"
                 android:background="@color/white"
                 app:cardCornerRadius="@dimen/article_margin_8">
 
@@ -99,7 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/detail_inner_horiz_margin"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="@dimen/article_margin_32"
                     android:layout_marginRight="@dimen/detail_inner_horiz_margin"
                     android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
                     android:paddingBottom="@dimen/detail_body_bottom_margin"
@@ -115,18 +110,10 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/share_fab"
-        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        style="@style/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:contentDescription="@string/action_share"
-        android:elevation="@dimen/fab_elevation"
-        android:src="@drawable/ic_share"
-        android:stateListAnimator="@drawable/fab_state_list_anim"
-        app:fabSize="normal"
         app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|end"
-        app:pressedTranslationZ="@dimen/fab_press_translation_z"
-        app:rippleColor="@color/fab_ripple" />
+        app:layout_anchorGravity="bottom|end" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

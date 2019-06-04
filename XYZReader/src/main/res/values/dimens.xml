@@ -13,6 +13,8 @@
     <dimen name="article_margin_4">4dp</dimen>
     <dimen name="article_margin_8">8dp</dimen>
     <dimen name="article_margin_16">16dp</dimen>
+    <dimen name="article_margin_24">24dp</dimen>
+    <dimen name="article_margin_32">32dp</dimen>
 
     <dimen name="article_padding_4">4dp</dimen>
     <dimen name="article_padding_8">8dp</dimen>
