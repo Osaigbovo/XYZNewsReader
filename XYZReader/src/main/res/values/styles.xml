@@ -1,10 +1,36 @@
 <resources>
 
     <style name="Theme.Bacon" parent="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge">
+
+        <!--
+        <item name="colorPrimary">@color/theme_primary</item>
+        <item name="colorPrimaryDark">@color/theme_primary_dark</item>
+        <item name="colorAccent">@color/theme_accent</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+        <item name="android:windowExitTransition" tools:targetApi="lollipop">@transition/grid_exit
+        </item>
+        <item name="android:windowReenterTransition" tools:targetApi="lollipop">
+            @transition/slide_top
+        </item>
+        -->
     </style>
 
-    <style name="Theme.Bacon.Detail">
+    <style name="Theme.Bacon.Detail" parent="Theme.Bacon">
         <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <!--
+         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+        <item name="android:fragmentExitTransition" tools:targetApi="lollipop">
+            @transition/slide_top
+        </item>-->
+    </style>
+
+    <style name="toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
 </resources>

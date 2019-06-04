@@ -8,4 +8,27 @@
     <dimen name="fab_press_translation_z">6dp</dimen>
     <dimen name="fab_margin">24dp</dimen>
 
+
+    <!--<dimen name="detail_title_text_size">28sp</dimen>
+    <dimen name="detail_body_text_size">18sp</dimen>
+    <dimen name="fab_elevation">4dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>-->
+
+    <dimen name="toolbar_height">65dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="frame_elevation">4dp</dimen>
+    <dimen name="rv_padding">2dp</dimen>
+
+    <dimen name="material_card_margin">4dp</dimen>
+    <dimen name="material_card_elevation">4dp</dimen>
+
+    <dimen name="article_margin">16dp</dimen>
+    <dimen name="expandedTitleMarginEnd">64dp</dimen>
+    <dimen name="expandedTitleMarginStart">48dp</dimen>
+    <dimen name="image_height">300dp</dimen>
+    <dimen name="article_padding">16dp</dimen>
+    <dimen name="body_margin">24dp</dimen>
+
+    <integer name="anim_duration_long">500</integer>
+
 </resources>

@@ -3,13 +3,13 @@ package com.example.xyzreader.ui;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.xyzreader.R;
-import com.example.xyzreader.ui.widgets.DynamicHeightNetworkImageView;
-
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.xyzreader.R;
+import com.example.xyzreader.ui.widgets.DynamicImageView;
+
 public class ArticleListViewHolder extends RecyclerView.ViewHolder {
-    public DynamicHeightNetworkImageView thumbnailView;
+    public DynamicImageView thumbnailView;
     public TextView titleView;
     public TextView subtitleView;
 
